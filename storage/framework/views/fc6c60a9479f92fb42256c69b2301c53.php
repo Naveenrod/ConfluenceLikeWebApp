@@ -1,17 +1,17 @@
 <div class="quill-editor">
-    <div id="{{ $id ?? 'content' }}-editor" style="height: 500px;"></div>
-    <textarea id="{{ $id ?? 'content' }}" name="{{ $name ?? 'content' }}" style="display: none;">{{ $value ?? '' }}</textarea>
+    <div id="<?php echo e($id ?? 'content'); ?>-editor" style="height: 500px;"></div>
+    <textarea id="<?php echo e($id ?? 'content'); ?>" name="<?php echo e($name ?? 'content'); ?>" style="display: none;"><?php echo e($value ?? ''); ?></textarea>
 </div>
 
-@push('styles')
+<?php $__env->startPush('styles'); ?>
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-@endpush
+<?php $__env->stopPush(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const editorId = '{{ $id ?? 'content' }}';
+    const editorId = '<?php echo e($id ?? 'content'); ?>';
     const editorElement = document.getElementById(editorId + '-editor');
     const textareaElement = document.getElementById(editorId);
     
@@ -52,5 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
 
+<?php /**PATH /Users/naveenrodrigo/Documents/ConfluenceLikeWebApp/resources/views/components/tinymce-editor.blade.php ENDPATH**/ ?>

@@ -5,7 +5,7 @@ A full-featured collaboration and documentation platform built with Laravel 11, 
 ## Features
 
 - **Spaces & Pages**: Organize content into spaces with hierarchical pages
-- **Rich Text Editing**: WYSIWYG editor with TinyMCE
+- **Rich Text Editing**: WYSIWYG editor with Quill
 - **Comments**: Threaded comments on pages
 - **File Attachments**: Upload and manage file attachments
 - **Version History**: Track and restore page versions
@@ -48,7 +48,7 @@ php artisan serve
 
 - Laravel 11
 - MySQL/PostgreSQL
-- TinyMCE (Rich Text Editor)
+- Quill (Rich Text Editor)
 - Laravel Scout (Search)
 - Tailwind CSS
 - Vue.js
