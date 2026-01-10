@@ -42,7 +42,7 @@
                 $rootPages = $page->space->rootPages()->with('children')->get();
             @endphp
             @foreach($rootPages as $rootPage)
-                <div class="mb-1" x-data="{ open: {{ $rootPage->id === $page->id || $page->breadcrumbs->pluck('id')->contains($rootPage->id) ? 'true' : 'false' }} }">
+                <div class="mb-1" x-data="{ open: {{ $rootPage->id === $page->id || collect($page->breadcrumbs)->pluck('id')->contains($rootPage->id) ? 'true' : 'false' }} }">
                     <a href="{{ route('pages.show', $rootPage) }}" class="flex items-center px-2 py-1.5 rounded text-sm {{ $rootPage->id === $page->id ? 'bg-confluence-blue/20 text-confluence-blue' : 'text-confluence-text hover:bg-confluence-card' }}">
                         @if($rootPage->children->count() > 0)
                             <button @click.prevent="open = !open" class="mr-1">
