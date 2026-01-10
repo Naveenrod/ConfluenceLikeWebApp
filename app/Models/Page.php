@@ -22,6 +22,7 @@ class Page extends Model
         'author_id',
         'version',
         'is_published',
+        'view_count',
     ];
 
     protected static function boot()
@@ -103,6 +104,31 @@ class Page extends Model
         }
 
         return $breadcrumbs;
+    }
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(PageLike::class);
+    }
+
+    public function likedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'page_likes')->withTimestamps();
+    }
+
+    public function shareLinks(): HasMany
+    {
+        return $this->hasMany(ShareLink::class);
+    }
+
+    public function getLikesCountAttribute(): int
+    {
+        return $this->likes()->count();
+    }
+
+    public function incrementViewCount(): void
+    {
+        $this->increment('view_count');
     }
 }
 

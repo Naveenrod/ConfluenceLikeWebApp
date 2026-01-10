@@ -38,5 +38,10 @@ class Space extends Model
     {
         return $this->hasMany(Page::class)->whereNull('parent_id');
     }
+
+    public function starredBy()
+    {
+        return $this->morphMany(StarredItem::class, 'starrable');
+    }
 }
 

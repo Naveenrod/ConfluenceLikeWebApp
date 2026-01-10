@@ -3,49 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Confluence App</title>
+    <title>Sign up - Confluence</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        confluence: {
+                            bg: '#1d2125',
+                            sidebar: '#161a1d',
+                            card: '#22272b',
+                            border: '#a6c5e229',
+                            text: '#b6c2cf',
+                            textMuted: '#8c9bab',
+                            blue: '#579dff',
+                            blueHover: '#85b8ff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #1d2125; }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8">
-            <div>
-                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                    Create your account
-                </h2>
+<body class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <div class="w-10 h-10 bg-confluence-blue rounded flex items-center justify-center">
+                    <i class="fas fa-infinity text-white"></i>
+                </div>
+                <span class="text-2xl font-bold text-white">Confluence</span>
             </div>
-            <form class="mt-8 space-y-6" action="{{ route('register') }}" method="POST">
+            <h2 class="text-xl text-white">Create your account</h2>
+        </div>
+
+        <!-- Register Form -->
+        <div class="bg-confluence-card border border-confluence-border rounded-lg p-8">
+            <form action="{{ route('register') }}" method="POST" class="space-y-5">
                 @csrf
-                <div class="rounded-md shadow-sm space-y-4">
-                    <div>
-                        <label for="name" class="sr-only">Name</label>
-                        <input id="name" name="name" type="text" autocomplete="name" required 
-                               class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" 
-                               placeholder="Full name" value="{{ old('name') }}">
-                    </div>
-                    <div>
-                        <label for="email" class="sr-only">Email address</label>
-                        <input id="email" name="email" type="email" autocomplete="email" required 
-                               class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" 
-                               placeholder="Email address" value="{{ old('email') }}">
-                    </div>
-                    <div>
-                        <label for="password" class="sr-only">Password</label>
-                        <input id="password" name="password" type="password" autocomplete="new-password" required 
-                               class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" 
-                               placeholder="Password">
-                    </div>
-                    <div>
-                        <label for="password_confirmation" class="sr-only">Confirm Password</label>
-                        <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required 
-                               class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" 
-                               placeholder="Confirm Password">
-                    </div>
+
+                <div>
+                    <label for="name" class="block text-sm font-medium text-confluence-textMuted mb-2">Full name</label>
+                    <input id="name" name="name" type="text" autocomplete="name" required
+                           value="{{ old('name') }}"
+                           class="w-full bg-confluence-sidebar border border-confluence-border rounded-md px-4 py-3 text-white placeholder-confluence-textMuted focus:outline-none focus:border-confluence-blue focus:ring-1 focus:ring-confluence-blue"
+                           placeholder="Enter your full name">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-confluence-textMuted mb-2">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required
+                           value="{{ old('email') }}"
+                           class="w-full bg-confluence-sidebar border border-confluence-border rounded-md px-4 py-3 text-white placeholder-confluence-textMuted focus:outline-none focus:border-confluence-blue focus:ring-1 focus:ring-confluence-blue"
+                           placeholder="Enter your email">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-confluence-textMuted mb-2">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="new-password" required
+                           class="w-full bg-confluence-sidebar border border-confluence-border rounded-md px-4 py-3 text-white placeholder-confluence-textMuted focus:outline-none focus:border-confluence-blue focus:ring-1 focus:ring-confluence-blue"
+                           placeholder="Create a password">
+                </div>
+
+                <div>
+                    <label for="password_confirmation" class="block text-sm font-medium text-confluence-textMuted mb-2">Confirm password</label>
+                    <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required
+                           class="w-full bg-confluence-sidebar border border-confluence-border rounded-md px-4 py-3 text-white placeholder-confluence-textMuted focus:outline-none focus:border-confluence-blue focus:ring-1 focus:ring-confluence-blue"
+                           placeholder="Confirm your password">
                 </div>
 
                 @if($errors->any())
-                    <div class="text-red-600 text-sm">
-                        <ul class="list-disc list-inside">
+                    <div class="p-3 bg-red-900/30 border border-red-700 rounded-md text-red-300 text-sm">
+                        <ul class="list-disc list-inside space-y-1">
                             @foreach($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
@@ -53,21 +88,25 @@
                     </div>
                 @endif
 
-                <div>
-                    <button type="submit" 
-                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        Register
-                    </button>
-                </div>
-
-                <div class="text-center">
-                    <a href="{{ route('login') }}" class="text-sm text-blue-600 hover:text-blue-500">
-                        Already have an account? Sign in
-                    </a>
-                </div>
+                <button type="submit"
+                        class="w-full bg-confluence-blue hover:bg-confluence-blueHover text-white py-3 px-4 rounded-md font-medium transition">
+                    Create account
+                </button>
             </form>
+
+            <div class="mt-6 pt-6 border-t border-confluence-border text-center">
+                <p class="text-sm text-confluence-textMuted">
+                    Already have an account?
+                    <a href="{{ route('login') }}" class="text-confluence-blue hover:text-confluence-blueHover font-medium">
+                        Log in
+                    </a>
+                </p>
+            </div>
         </div>
+
+        <p class="mt-8 text-center text-xs text-confluence-textMuted">
+            By creating an account, you agree to our Terms of Service and Privacy Policy.
+        </p>
     </div>
 </body>
 </html>
-
